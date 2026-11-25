@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Riya Gupta — ET401 Digital Storytelling &amp; Reflective Journal</title>
+  <meta name="description" content="Personal student project journal and digital storytelling portfolio for ET 401 Learning Technologies.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'&gt;&lt;text y='.9em' font-size='90'&gt;📓&lt;/text&gt;&lt;/svg&gt;">
+</head>
+<body>
+
+  <!-- Top Desk Utility Bar -->
+  <header class="desk-header">
+    <div class="journal-badge">
+      <div class="badge-seal">RG</div>
+      <div class="journal-meta">
+        <strong>Riya Gupta • Project Diary</strong>
+        <span>ET 401 Learning Technologies • Sem 1 (2026–2027) • BT23GCS453</span>
+      </div>
+    </div>
+    <div class="desk-actions">
+      <button class="desk-btn btn-edit" id="toggleEditBtn" title="Toggle edit mode to type or refine notes directly">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+        <span id="editBtnText">Journal Edit Mode: Off</span>
+      </button>
+      <button class="desk-btn" id="saveHtmlBtn" title="Save or export your updated index.html file">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
+        <span id="saveBtnText">Save / Export HTML</span>
+      </button>
+      <button class="desk-btn" id="openScratchBtn" title="Quick reflection sticky notepad">
+        <span>✏️ Sticky Notepad</span>
+      </button>
+      <button class="desk-btn btn-print" id="printJournalBtn" title="Print full journal or save as PDF portfolio">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+        <span>Print / Save PDF</span>
+      </button>
+      <span id="saveStatusToast" style="display: inline-block; font-family: var(--font-hand); font-size: 1.15rem; color: var(--accent-sage); font-weight: 700; margin-left: 4px;">✓ Auto-saved</span>
+    </div>
+  </header>
+
+  <!-- Physical Scrapbook / Journal Wrapper -->
+  <div class="journal-wrapper">
+
+    <!-- Table of Contents Index Tabs (Notebook edge tabs) -->
+    <nav class="journal-index-tabs" id="journalTabs" aria-label="Journal Chapter Tabs">
+      <button class="index-tab tab-intro" data-chapter="1">
+        <span class="tab-num">01</span> Intro
+      </button>
+      <button class="index-tab tab-p1" data-chapter="2">
+        <span class="tab-num">02</span> P1: EcoSmart
+      </button>
+      <button class="index-tab tab-p2" data-chapter="3">
+        <span class="tab-num">03</span> P2: Mentoring LPL
+      </button>
+      <button class="index-tab tab-p3" data-chapter="4">
+        <span class="tab-num">04</span> P3: Myself &amp; Learning
+      </button>
+      <button class="index-tab tab-p4" data-chapter="5">
+        <span class="tab-num">05</span> P4: Resume Gap
+      </button>
+      <button class="index-tab tab-p5 active" data-chapter="6">
+        <span class="tab-num">06</span> P5: Next Chapter
+      </button>
+    </nav>
+
+    <!-- The Physical Journal Book -->
+    <main class="journal-book" id="journalContent">
+      <div class="bookmark-ribbon" title="Bookmark Ribbon"></div>
+
+      <!-- Book Header Progress Tracker -->
+      <div class="journal-progress-bar">
+        <div class="progress-info">
+          <span class="progress-date" id="pageDateDisplay">Nov 2026 • Notebook Entry #6</span>
+          <span class="progress-divider">•</span>
+          <span class="progress-pill" id="pageCounterDisplay">Page 06 of 06</span>
+        </div>
+        <div class="progress-indicators" id="dotNav" aria-label="Quick Page Jump">
+          <span class="prog-dot" data-chapter="1" title="01: Introduction"></span>
+          <span class="prog-dot" data-chapter="2" title="02: P1 EcoSmart"></span>
+          <span class="prog-dot" data-chapter="3" title="03: P2 LPL Mentoring"></span>
+          <span class="prog-dot" data-chapter="4" title="04: P3 Myself &amp; Learning"></span>
+          <span class="prog-dot" data-chapter="5" title="05: P4 Resume-to-Job Gap"></span>
+          <span class="prog-dot active" data-chapter="6" title="06: P5 Next Chapter"></span>
+        </div>
+      </div>
+
+      <!-- ===================================================================
+           PAGE 01 — A LITTLE INTRODUCTION
+           =================================================================== -->
+      <section class="chapter-page" id="page-1" data-title="A Little Introduction" data-date="Nov 2026 • Notebook Entry #1">
+        <div class="page-header">
+          <span class="page-stamp">CHAPTER 01 • WELCOME TO MY DESK</span>
+          <h1 class="page-title">Opening My Project Journal
+            <span class="hand-note-header">(the unpolished, real version)</span>
+          </h1>
+          <p class="page-subtitle">A student's reflections on building machine learning tools, mentoring peers, and discovering how I actually learn.</p>
+        </div>
+
+        <div class="scrap-grid-2">
+          <!-- Left Column: Journal Text & Timeline -->
+          <div class="journal-narrative">
+            <p id="edit-block-0" contenteditable="false" style="outline: none; cursor: text; background-color: transparent;">
+              When people build portfolios, they usually make them look spotless. Every chart is clean, every algorithm worked on the first try, and every team project was an effortless triumph.
+            </p>
+            <p style="margin-top: 14px; outline: none; cursor: text; background-color: transparent;" id="edit-block-1" contenteditable="false">
+              That isn't how my semester went. This digital journal is my honest record for <span class="hand-highlight">ET 401 Learning Technologies</span>. Over the last four projects, I inherited 80% of an existing carbon prediction codebase, mentored teammates through debugging sessions, looked closely at how playing basketball and dancing shaped my own hands-on learning style, and caught duplicate resume data that was quietly skewing my machine learning metrics.
+            </p>
+
+            <div class="ruled-divider"></div>
+
+            <h3 style="font-family: var(--font-serif); font-size: 1.3rem; margin-bottom: 8px;">The Semester at a Glance:</h3>
+            <div class="journal-timeline">
+              <div class="timeline-entry">
+                <span class="timeline-dot"></span>
+                <div class="timeline-date">PROJECT 1</div>
+                <div class="timeline-title" id="edit-block-2" contenteditable="false" style="outline: none; cursor: text; background-color: transparent;">P1 — EcoSmart Carbon Predictor</div>
+                <div class="timeline-desc" id="edit-block-3" contenteditable="false" style="outline: none; cursor: text; background-color: transparent;">Stepped into an ongoing project at 80% completion. Tuned the Random Forest Regressor (R² = 0.844), integrated the Flask API, and built a Power BI what-if scenario dashboard.</div>
+              </div>
+
+              <div class="timeline-entry">
+                <span class="timeline-dot"></span>
+                <div class="timeline-date">PROJECT 2</div>
+                <div class="timeline-title" id="edit-block-4" contenteditable="false" style="outline: none; cursor: text; background-color: transparent;">P2 — Mentoring the LPL Team</div>
+                <div class="timeline-desc" id="edit-block-5" contenteditable="false" style="outline: none; cursor: text; background-color: transparent;">Guided peer teammates through technical logic, code breakdowns, and system design. Learned that you only truly understand an algorithm when you have to explain it without looking at the solution.</div>
+              </div>
+
+              <div class="timeline-entry">
+                <span class="timeline-dot"></span>
+                <div class="timeline-date">PROJECT 3</div>
+                <div class="timeline-title" id="edit-block-6" contenteditable="false" style="outline: none; cursor: text; background-color: transparent;">P3 — Understanding Myself &amp; Learning Style</div>
+                <div class="timeline-desc" id="edit-block-7" contenteditable="false" style="outline: none; cursor: text; background-color: transparent;">Examined my visual and kinesthetic learning style through my decade of basketball and self-choreographed dance, and explored how computer vision and AR could help athletes protect injured joints.</div>
+              </div>
+
+              <div class="timeline-entry">
+                <span class="timeline-dot"></span>
+                <div class="timeline-date">PROJECT 4</div>
+                <div class="timeline-title" id="edit-block-8" contenteditable="false" style="outline: none; cursor: text; background-color: transparent;">P4 — Resume-to-Job Gap Analyzer</div>
+                <div class="timeline-desc" id="edit-block-9" contenteditable="false" style="outline: none; cursor: text; background-color: transparent;">Engineered an end-to-end NLP skill extraction pipeline with a 73-skill taxonomy and LinearSVC. Uncovered data leakage from duplicate resumes and re-validated cleanly (F1 = 95.2%, Accuracy = 90.9%).</div>
+              </div>
+
+              <div class="timeline-entry">
+                <span class="timeline-dot"></span>
+                <div class="timeline-date">PROJECT 5</div>
+                <div class="timeline-title" id="edit-block-10" contenteditable="false" style="outline: none; cursor: text; background-color: transparent;">P5 — What Comes Next</div>
+                <div class="timeline-desc" id="edit-block-11" contenteditable="false" style="outline: none; cursor: text; background-color: transparent;">Synthesizing these lessons as I prepare for industry work and my upcoming internship at NIIT. Focusing on scalable engineering, distributed systems, and staying humble.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Visual Scrapbook Collages & Sticky Notes -->
+          <div class="journal-sidebar-collage">
+            <!-- Pinned Sticky Note -->
+            <div class="sticky-note rotate-right" id="edit-block-12" contenteditable="false" style="outline: none; cursor: text; background-color: transparent;">
+              <span class="sticky-pin"></span>
+              <span class="sticky-title">Field Note #1</span>
+              "Don't hide the messy drafts. The real learning happened when the code failed, the metrics were suspicious, or the explanation fell flat."
+              <div style="text-align: right; margin-top: 8px; font-size: 1rem; color: var(--accent-clay);">— Riya (BT23GCS453)</div>
+            </div>
+
+            <!-- Polaroid Photo Frame -->
+            <div class="polaroid-frame tilt-left" style="margin-top: 24px;">
+              <div class="washi-tape tape-top-center tape-rose"></div>
+              <div class="polaroid-img-box">
+                <img src="assets/1000457492.jpg" alt="Riya Gupta journal snapshot" onerror="this.src='assets/Dynamic GUPTA Basketball Sticker.png';">
+              </div>
+              <div class="polaroid-caption" id="edit-block-13" contenteditable="false" style="outline: none; cursor: text; background-color: transparent;">
+                Campus, lab, and court • ET401 Semester
+                <span class="photo-badge-date">Me &amp; my daily tools: Python, notebooks &amp; basketball</span>
+              </div>
+            </div>
+
+            <!-- Scrap Paper Card: Student Info -->
+            <div class="scrap-card aged" style="margin-top: 28px; position: relative;">
+              <div class="washi-tape tape-corner-right tape-sage"></div>
+              <h4 style="font-family: var(--font-serif); font-size: 1.1rem; margin-bottom: 8px; color: var(--accent-sage);">Journal Profile</h4>
+              <ul style="list-style: none; font-size: 0.88rem; color: var(--ink-secondary); line-height: 1.6;">
+                <li><strong>Student:</strong> Riya Gupta</li>
+                <li><strong>Course:</strong> ET 401 Learning Technologies</li>
+                <li><strong>Academic Year:</strong> 2026 – 2027 (Sem 1)</li>
+                <li><strong>Primary Tools:</strong> Python, Scikit-learn, Pandas, Flask, Streamlit, Power BI</li>
+                <li><strong>Interests:</strong> Data Science, Dance, Basketball</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================================
+           PAGE 02 — P1: ECOSMART
+           =================================================================== -->
+      <section class="chapter-page" id="page-2" data-title="P1: EcoSmart" data-date="Aug – Sept 2026 • Notebook Entry #2">
+        <div class="page-header">
+          <span class="page-stamp">CHAPTER 02 • PROJECT P1</span>
+          <h1 class="page-title">EcoSmart: Carbon Footprints &amp; Honest Engineering
+            <span class="hand-note-header">(stepping into an 80% codebase)</span>
+          </h1>
+          <p class="page-subtitle">Predicting annual carbon emissions from daily habits like transport, recycling, and home energy use.</p>
+        </div>
+
+        <!-- Honest Contribution Callout Banner -->
+        <div class="contribution-box">
+          <div class="washi-tape tape-top-center"></div>
+          <div class="contrib-header">
+            <span class="contrib-title">Honest Contribution Breakdown</span>
+            <span class="contrib-badge">20% Ownership • Critical Delivery</span>
+          </div>
+          <div class="contrib-split-bar">
+            <div class="contrib-segment-prior">~80% Foundation (Existing Codebase &amp; Raw Survey Data)</div>
+            <div class="contrib-segment-riya">20% (My Contribution)</div>
+          </div>
+          <div class="contrib-legend">
+            <span><strong>Inherited:</strong> Initial concept, baseline 10,000-survey dataset, early web scaffolding.</span>
+            <span><strong>What I Owned:</strong> ML tuning (Random Forest R² 0.844), Flask prediction API, Power BI what-if dashboard, evaluation metrics, and technical QA report.</span>
+          </div>
+        </div>
+
+        <div class="scrap-grid-2" style="margin-top: 24px;">
+          <!-- Left Column: Story & Metrics -->
+          <div class="journal-narrative">
+            <h3 style="font-family: var(--font-serif); font-size: 1.35rem; margin-bottom: 8px;">What EcoSmart Actually Does</h3>
+            <p id="edit-block-14" contenteditable="false" style="outline: none; cursor: text; background-color: transparent;">
+              EcoSmart was designed to answer a practical question: how much do everyday consumer habits actually contribute to individual annual carbon footprints? Instead of asking people for complex industrial metrics, the model takes lifestyle inputs—such as daily vehicle commute distance, recycling habits, diet, cooking energy, and heating sources—and predicts annual CO₂ equivalent emissions in kilograms.
+            </p>
+
+            <p style="margin-top: 14px; outline: none; cursor: text; background-color: transparent;" id="edit-block-15" contenteditable="false">
+              Joining a project that is already ~80% complete is a very specific kind of learning. In school, we're almost always taught to start from an empty file: `import pandas as pd`. In reality, engineers almost always inherit other people's variable names, half-finished schemas, and unspoken assumptions.
+            </p>
+
+            <!-- Tactile Metric Cards Grid -->
+            <div class="scrap-grid-3" style="margin: 22px 0;">
+              <div class="metric-scrap">
+                <span class="metric-label">Model Tested</span>
+                <div class="metric-val">100 Trees</div>
+                <div class="metric-sub">Random Forest Regressor (80/20 train-test split)</div>
+              </div>
+              <div class="metric-scrap">
+                <span class="metric-label">Reported Fit (R²)</span>
+                <div class="metric-val" style="color: var(--accent-sage);">0.844</div>
+                <div class="metric-sub">Strong variance capture on test lifestyle cases</div>
+              </div>
+              <div class="metric-scrap">
+                <span class="metric-label">Mean Abs Error</span>
+                <div class="metric-val">315.4</div>
+                <div class="metric-sub">kg CO₂e (RMSE = 402.9 kg CO₂e)</div>
+              </div>
+            </div>
+
+            <h3 style="font-family: var(--font-serif); font-size: 1.3rem; margin-top: 20px; margin-bottom: 8px;">My Key Contributions (The 20%)</h3>
+            <ul style="padding-left: 20px; color: var(--ink-secondary); line-height: 1.7; font-size: 0.95rem;">
+              <li><strong>Model Verification &amp; Evaluation:</strong> Evaluated the 100-tree Random Forest Regressor using scikit-learn. Verified the reported test metrics (R² = 0.844, RMSE = 402.9, MAE = 315.4) and confirmed feature importances, noting that daily vehicle distance and heating fuel type accounted for the greatest portion of emission variance.</li>
+              <li><strong>Flask API Integration:</strong> Connected the trained regressor pipeline to Flask endpoints with proper input validation so the multi-step frontend form could return real-time emission estimates without freezing.</li>
+              <li><strong>Power BI What-If Dashboard:</strong> Built an interactive Power BI dashboard complementing the web form. It allows filtered comparisons across demographic groups and lets users run "what-if" scenarios (e.g., "What happens to group emissions if daily car travel decreases by 15 km?").</li>
+              <li><strong>Documentation &amp; Limitations:</strong> Explicitly documented project constraints—specifically that Random Forest regression should never be trusted for extrapolating far beyond the training data range (e.g. extreme unrecorded lifestyle cases).</li>
+            </ul>
+
+            <span class="margin-note" style="margin-top: 18px; outline: none; cursor: text; background-color: transparent;" id="edit-block-16" contenteditable="false">
+              "Writing the limitation section in the P1 report felt refreshing. Acknowledging where a model fails is just as important as showing its R² score."
+            </span>
+          </div>
+
+          <!-- Right Column: Visual Collages & Sticky Reflections -->
+          <div class="journal-sidebar-collage">
+            <!-- Polaroid with EcoSmart Architecture Sketch -->
+            <div class="polaroid-frame tilt-right">
+              <div class="washi-tape tape-top-center tape-sage"></div>
+              <div class="polaroid-img-box" style="background: #fdfbf7; border: 1px solid var(--border-paper); padding: 14px;">
+                <svg viewBox="0 0 400 280" style="width: 100%; height: 100%;" xmlns="http://www.w3.org/2000/svg">
+                  <!-- Hand-drawn style architecture diagram -->
+                  <rect x="20" y="20" width="100" height="60" rx="4" fill="#faeecf" stroke="#382e27" stroke-width="1.8" stroke-dasharray="3,1"></rect>
+                  <text x="70" y="48" font-family="'Caveat', cursive" font-size="16" font-weight="bold" text-anchor="middle" fill="#2d2621">Survey Data</text>
+                  <text x="70" y="66" font-family="'Space Mono', monospace" font-size="10" text-anchor="middle" fill="#574c43">10k Records</text>
+
+                  <!-- Arrow -->
+                  <path d="M 125 50 L 165 50" stroke="#9c604a" stroke-width="2" marker-end="url(#arrow)" fill="none"></path>
+                  <text x="145" y="42" font-family="'Caveat', cursive" font-size="13" text-anchor="middle" fill="#9c604a">Clean</text>
+
+                  <!-- Box 2 -->
+                  <rect x="170" y="20" width="110" height="60" rx="4" fill="#d3ded0" stroke="#382e27" stroke-width="1.8"></rect>
+                  <text x="225" y="48" font-family="'Caveat', cursive" font-size="16" font-weight="bold" text-anchor="middle" fill="#2d2621">Random Forest</text>
+                  <text x="225" y="66" font-family="'Space Mono', monospace" font-size="10" text-anchor="middle" fill="#574c43">100 Trees (R²=0.844)</text>
+
+                  <!-- Arrow -->
+                  <path d="M 225 85 L 225 125" stroke="#9c604a" stroke-width="2" fill="none"></path>
+
+                  <!-- Box 3: Flask -->
+                  <rect x="70" y="130" width="120" height="60" rx="4" fill="#ebd0d1" stroke="#382e27" stroke-width="1.8"></rect>
+                  <text x="130" y="158" font-family="'Caveat', cursive" font-size="16" font-weight="bold" text-anchor="middle" fill="#2d2621">Flask Web App</text>
+                  <text x="130" y="176" font-family="'Space Mono', monospace" font-size="10" text-anchor="middle" fill="#574c43">Real-time Form</text>
+
+                  <!-- Box 4: Power BI -->
+                  <rect x="230" y="130" width="130" height="60" rx="4" fill="#fae8a4" stroke="#382e27" stroke-width="1.8"></rect>
+                  <text x="295" y="158" font-family="'Caveat', cursive" font-size="16" font-weight="bold" text-anchor="middle" fill="#2d2621">Power BI Dashboard</text>
+                  <text x="295" y="176" font-family="'Space Mono', monospace" font-size="10" text-anchor="middle" fill="#574c43">What-If Scenarios</text>
+
+                  <!-- Connection to Power BI -->
+                  <path d="M 250 85 L 295 125" stroke="#9c604a" stroke-width="1.5" stroke-dasharray="2,2" fill="none"></path>
+                  
+                  <!-- Bottom Annotation -->
+                  <text x="200" y="235" font-family="'Caveat', cursive" font-size="15" text-anchor="middle" fill="#b86246">★ My 20%: Tuning, Flask API, Power BI &amp; Validation</text>
+                </svg>
+              </div>
+              <div class="polaroid-caption" id="edit-block-17" contenteditable="false" style="outline: none; cursor: text; background-color: transparent;">
+                EcoSmart Architecture Blueprint
+                <span class="photo-badge-date">Connecting Scikit-learn, Flask, and Power BI</span>
+              </div>
+            </div>
+
+            <!-- Sticky Note on Legacy Code -->
+            <div class="sticky-note sticky-mint rotate-left" style="margin-top: 26px; outline: none; cursor: text; background-color: transparent;" id="edit-block-18" contenteditable="false">
+              <span class="sticky-pin"></span>
+              <span class="sticky-title">Lesson in Legacy Code</span>
+              "Reading someone else's code without breaking their working features is harder than writing your own from scratch. It forced me to read every single line of data transformation before tweaking hyperparameters."
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================================
+           PAGE 03 — P2: MENTORING LPL
+           =================================================================== -->
+      <section class="chapter-page" id="page-3" data-title="P2: Mentoring LPL" data-date="Sept – Oct 2026 • Notebook Entry #3">
+        <div class="page-header">
+          <span class="page-stamp">CHAPTER 03 • PROJECT P2</span>
+          <h1 class="page-title">Mentoring the LPL Team: Navigating the Unexpected
+            <span class="hand-note-header">(when two members left campus)</span>
+          </h1>
+          <p class="page-subtitle">Reflections on an unexpected team crisis, redistributing vacant responsibilities, and learning what real coordination takes.</p>
+        </div>
+
+        <!-- Handwritten Central Line Sticky Note -->
+        <div class="sticky-note sticky-yellow rotate-left" style="margin: 0px 0px 28px; max-width: 720px; outline: none; cursor: text; background-color: transparent;" id="edit-block-19" contenteditable="false">
+          <span class="sticky-pin"></span>
+          <span class="sticky-title">Journal Reflection</span>
+          "Sometimes teamwork is not about following the plan. It's about figuring out a new plan when the original one no longer works."
+        </div>
+
+        <div class="scrap-grid-2">
+          <!-- Left Column: Story -->
+          <div class="journal-narrative">
+            <h3 style="font-family: var(--font-serif); font-size: 1.35rem; margin-bottom: 8px;">The Sudden Void: When Two Members Left</h3>
+            <p id="edit-block-20" contenteditable="false" style="outline: none; cursor: text; background-color: transparent;">
+              When we started the LPL mentoring project, we had a clear roadmap. Every module was mapped out, responsibilities were allocated, and the timeline felt manageable on paper. But halfway through the semester, we hit an unexpected reality check: two of our team members left campus.
+            </p>
+
+            <p style="margin-top: 14px; outline: none; cursor: text; background-color: transparent;" id="edit-block-21" contenteditable="false">
+              Suddenly, their roles, code deliverables, and project duties were completely vacant. For a couple of days, the anxiety was palpable. Deadlines were not going to shift just because our roster shrank, and nobody from outside was going to step in to do the work for us. It was the first time in university that a project wasn't just about writing code—it was about emergency team management.
+            </p>
+
+            <h3 style="font-family: var(--font-serif); font-size: 1.3rem; margin-top: 22px; margin-bottom: 8px;">Regrouping &amp; Redistributing Responsibilities</h3>
+            <p id="edit-block-22" contenteditable="false" style="outline: none; cursor: text; background-color: transparent;">
+              Instead of letting frustration set in or allowing the work to stall, we called an open meeting. We sat down together outside the academic block, spread out the project requirements, and faced the gap directly.
+            </p>
+            <p style="margin-top: 14px; outline: none; cursor: text; background-color: transparent;" id="edit-block-23" contenteditable="false">
+              The worst mistake would have been dumping the orphaned work onto one person. Instead, we talked openly about what remained:
+            </p>
+            <ul style="padding-left: 20px; color: var(--ink-secondary); line-height: 1.7; font-size: 0.95rem; margin-top: 10px;">
+              <li><strong>Auditing capacity:</strong> We honestly evaluated who was comfortable with which modules and what each person could realistically handle alongside their academic load.</li>
+              <li><strong>Redividing the orphaned tasks:</strong> We redistributed the vacant responsibilities proportionally. Everyone took on an additional piece that matched their strengths.</li>
+              <li><strong>Setting clear ownership:</strong> Every task had an assigned owner so nothing fell into the ambiguous cracks between teammates.</li>
+            </ul>
+          </div>
+
+          <!-- Right Column: Sidebar Notes & Crisis Card -->
+          <div class="journal-sidebar-collage">
+            <!-- Crisis Card -->
+            <div class="scrap-card aged" style="position: relative;">
+              <div class="washi-tape tape-top-center tape-rose"></div>
+              <h4 style="font-family: var(--font-serif); font-size: 1.15rem; margin-bottom: 10px; color: var(--accent-terracotta);">Team Management Snapshot</h4>
+              <div style="font-size: 0.88rem; color: var(--ink-secondary); line-height: 1.6;">
+                <p><strong>The Incident:</strong> 2 team members had to leave campus mid-project.</p>
+                <p style="margin-top: 6px;"><strong>The Risk:</strong> Abandoned responsibilities, missed milestone deadlines, and student burnout.</p>
+                <p style="margin-top: 6px;"><strong>Our Pivot:</strong> Emergency sync, transparent capacity audit, and realistic role reassignment.</p>
+                <p style="margin-top: 6px;"><strong>The Result:</strong> 100% of tasks covered, continuous progress, and a closer team bond.</p>
+              </div>
+            </div>
+
+            <!-- Sticky Note on Mentoring & Support -->
+            <div class="sticky-note sticky-mint rotate-right" style="margin-top: 22px; outline: none; cursor: text; background-color: transparent;" id="edit-block-24" contenteditable="false">
+              <span class="sticky-pin"></span>
+              <span class="sticky-title">Note to Self</span>
+              "When people take on extra responsibilities outside their comfort zone, you can't just expect them to figure it out silently. Mentoring meant checking in daily to make sure no one was drowning."
+            </div>
+          </div>
+        </div>
+
+        <!-- ===============================================================
+             3-PHOTO SCRAPBOOK COLLAGE (LPL TEAM IN ACTION)
+             Replaceable images: assets/lpl_team_photo_1.jpg, photo_2, photo_3
+             =============================================================== -->
+        <div class="lpl-collage-container">
+          <div class="washi-tape tape-top-center tape-sage"></div>
+          <div class="lpl-collage-heading">
+            <span class="lpl-collage-title">LPL Team Memories • Majrakath Campus</span>
+            <span class="progress-pill" style="font-size: 0.75rem;">3 Project Photographs • Editable Captions</span>
+          </div>
+
+          <div class="lpl-photo-grid">
+            <!-- PHOTO 1: Academic Block 2 Late Sync -->
+            <div class="lpl-photo-card" style="transform: rotate(-1.8deg);">
+              <div class="washi-tape tape-corner-left tape-rose"></div>
+              <div class="polaroid-frame">
+                <div class="polaroid-img-box">
+                  <!-- Replaceable Image 1: assets/lpl_team_photo_1.jpg -->
+                  <img src="assets/lpl_team_photo_1.jpg" alt="LPL Team Sync outside Academic Block 2" onerror="this.src='assets/Breakdance Queen Sticker.png';">
+                </div>
+                <div class="polaroid-caption" id="edit-block-25" contenteditable="false" style="outline: none; cursor: text; background-color: transparent;">
+                  Late-night sync outside Academic Block 2
+                  <span class="photo-badge-date">Tuesday, 20/10/2026 • 10:53 PM • Regrouping after our team downsized</span>
+                  <span class="photo-replace-hint">Photo 1 (assets/lpl_team_photo_1.jpg)</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- PHOTO 2: Academic Block 1 Corridor Sync -->
+            <div class="lpl-photo-card" style="transform: rotate(2deg);">
+              <div class="washi-tape tape-top-center tape-sage"></div>
+              <div class="polaroid-frame">
+                <div class="polaroid-img-box">
+                  <!-- Replaceable Image 2: assets/lpl_team_photo_2.jpg -->
+                  <img src="assets/lpl_team_photo_2.jpg" alt="LPL Team in corridor outside Academic Block 1" onerror="this.src='assets/Dynamic GUPTA Basketball Sticker.png';">
+                </div>
+                <div class="polaroid-caption" id="edit-block-26" contenteditable="false" style="outline: none; cursor: text; background-color: transparent;">
+                  Staying grounded &amp; united on campus
+                  <span class="photo-badge-date">Friday, 30/10/2026 • 09:30 PM • Court grit &amp; daily coordination</span>
+                  <span class="photo-replace-hint">Photo 2 (assets/lpl_team_photo_2.jpg)</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- PHOTO 3: Courtyard Milestone Sync -->
+            <div class="lpl-photo-card" style="transform: rotate(-1.2deg);">
+              <div class="washi-tape tape-corner-right"></div>
+              <div class="polaroid-frame">
+                <div class="polaroid-img-box">
+                  <!-- Replaceable Image 3: assets/lpl_team_photo_3.jpg -->
+                  <img src="assets/lpl_team_photo_3.jpg" alt="LPL Team in courtyard under trees" onerror="this.src='assets/GUPTA Jersey Basketball Doodle.png';">
+                </div>
+                <div class="polaroid-caption" id="edit-block-27" contenteditable="false" style="outline: none; cursor: text; background-color: transparent;">
+                  Presentation day in the campus courtyard
+                  <span class="photo-badge-date">Daytime review • Proving that our redistributed plan held firm</span>
+                  <span class="photo-replace-hint">Photo 3 (assets/lpl_team_photo_3.jpg)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom Story: Execution, Coordination & Lessons Learned -->
+        <div class="scrap-grid-2" style="margin-top: 24px;">
+          <!-- Left Column: Coordination Story -->
+          <div class="journal-narrative">
+            <h3 style="font-family: var(--font-serif); font-size: 1.35rem; margin-bottom: 8px;">Coordinating the New Normal</h3>
+            <p id="edit-block-28" contenteditable="false" style="outline: none; cursor: text; background-color: transparent;">
+              Reassigning tasks on a sheet of paper is relatively straightforward; making sure everyone actually delivers the extra work without getting overwhelmed is the real challenge.
+            </p>
+            <p style="margin-top: 14px; outline: none; cursor: text; background-color: transparent;" id="edit-block-29" contenteditable="false">
+              We couldn't afford miscommunication or people silently getting stuck on unfamiliar code. We instituted quick, informal evening syncs—often standing right outside Academic Block 1 or 2 after class. The rule was simple: raise blockers early. If someone was struggling with an integration or feeling overloaded, we shifted small parts around immediately.
+            </p>
+            <p style="margin-top: 14px; outline: none; cursor: text; background-color: transparent;" id="edit-block-30" contenteditable="false">
+              As someone mentoring teammates through their new tasks, I made a conscious effort never to criticize someone for taking longer. We were all carrying extra weight. Keeping morale high and making sure everyone felt supported kept the momentum alive.
+            </p>
+          </div>
+
+          <!-- Right Column: Personal Takeaways -->
+          <div class="journal-sidebar-collage">
+            <div class="scrap-card lined-bg">
+              <div class="washi-tape tape-top-center tape-rose"></div>
+              <h4 style="font-family: var(--font-serif); font-size: 1.15rem; margin-bottom: 8px; color: var(--accent-terracotta);">What This Taught Me (Real Lessons):</h4>
+              <ul style="padding-left: 20px; font-size: 0.9rem; color: var(--ink-secondary); line-height: 1.65;">
+                <li><strong>Adaptability over rigidity:</strong> Perfect plans don't survive real-world turbulence. What matters is how calmly you adapt when circumstances change.</li>
+                <li><strong>Leadership is clearing obstacles:</strong> True leadership isn't about bossing peers around; it's about actively asking "what is blocking you?" and helping remove the friction.</li>
+                <li><strong>Continuous communication:</strong> When teams work under stress, silence usually means someone is stuck. Proactive, friendly check-ins prevent small issues from turning into crises.</li>
+                <li><strong>Trust builds through shared effort:</strong> Stepping up together when we were shorthanded created a level of trust that no smooth, easy project could ever build.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================================
+           PAGE 04 — P3: UNDERSTANDING MYSELF
+           =================================================================== -->
+      <section class="chapter-page" id="page-4" data-title="P3: Understanding Myself" data-date="Oct – Nov 2026 • Notebook Entry #4">
+        <div class="page-header">
+          <span class="page-stamp">CHAPTER 04 • SELF-DIRECTED INQUIRY</span>
+          <h1 class="page-title">Understanding Myself &amp; How I Learn
+            <span class="hand-note-header">(court, dance floor &amp; terminal)</span>
+          </h1>
+          <p class="page-subtitle">A reflection on visual and kinesthetic learning through basketball and dance, and how it shaped my approach to software.</p>
+        </div>
+
+        <div class="scrap-grid-2">
+          <!-- Left Column: Reflections -->
+          <div class="journal-narrative">
+            <h3 style="font-family: var(--font-serif); font-size: 1.35rem; margin-bottom: 8px;">Visual &amp; Kinesthetic: My Actual Learning Style</h3>
+            <p id="edit-block-31" contenteditable="false" style="outline: none; cursor: text; background-color: transparent;">
+              I have never been someone who learns by sitting quietly with a 500-page theoretical textbook. My project report for P3 gave me the opportunity to step back and honestly examine how I acquire new skills. The answer didn't come from a classroom lecture—it came from my two lifelong passions: <span class="wavy-underline">dance and basketball</span>.
+            </p>
+
+            <p style="margin-top: 14px; outline: none; cursor: text; background-color: transparent;" id="edit-block-32" contenteditable="false">
+              In dance—which I started as an infant dancing to dholki beats instinctively, and later developed into choreographing my own routines and entering university battles—I learn by watching a movement broken down visually, and then rehearsing it repeatedly until my muscles take over. In basketball—where I began in 7th grade, won CBSE Clusters, represented Meerut in U14, U16, and U18, and captained my university team at AIU—my late coach Yadav sir taught through drills. He would demonstrate defensive footwork once or twice, and we would repeat it until it became second nature.
+            </p>
+
+            <p style="margin-top: 14px; outline: none; cursor: text; background-color: transparent;" id="edit-block-33" contenteditable="false">
+              <span class="hand-highlight-sage">This directly explains how I approach code:</span> I cannot truly understand an algorithm or data structure until I see its data flow visually, trace its pointer shifts, and build it hands-on in a notebook. Theoretical descriptions only click when my fingers are actually running test cases.
+            </p>
+
+            <div class="ruled-divider"></div>
+
+            <h3 style="font-family: var(--font-serif); font-size: 1.3rem; margin-bottom: 8px;">Persistence Through Real Adversity</h3>
+            <p id="edit-block-34" contenteditable="false" style="outline: none; cursor: text; background-color: transparent;">
+              Both passions tested my resilience in ways that directly carry into my career:
+            </p>
+            <ul style="padding-left: 20px; color: var(--ink-secondary); line-height: 1.7; font-size: 0.95rem; margin-top: 10px;">
+              <li><strong>The Knee Injury:</strong> During my first year at university, a knee injury forced me off the court and stage. Dealing with pain and wearing a knee cap taught me physical and mental patience. It made me focus on strengthening exercises, pacing myself, and staying focused even when progress felt slow.</li>
+              <li><strong>Stage Fear:</strong> Stepping out for dance battles or captaining a high-stakes basketball match always comes with internal nervous tension. I learned not to fight the fear, but to channel it into intense focus and preparation.</li>
+              <li><strong>The Loss of Coach Yadav Sir:</strong> In 11th standard, Yadav sir passed away. He had fundamentally sharpened my game and believed in my leadership. It was a true breaking point. Pushing forward, returning to the court, and leading my university team at AIU became my way of honoring the discipline he instilled in me.</li>
+            </ul>
+
+            <h3 style="font-family: var(--font-serif); font-size: 1.3rem; margin-top: 20px; margin-bottom: 8px;">Where Technology Meets My Passions</h3>
+            <p id="edit-block-35" contenteditable="false" style="outline: none; cursor: text; background-color: transparent;">
+              In P3, I explored how emerging technologies could solve real problems I face as an athlete:
+            </p>
+            <div class="scrap-grid-2-even" style="margin-top: 12px;">
+              <div class="scrap-card aged">
+                <strong style="color: var(--accent-sage); font-family: var(--font-serif); font-size: 1.05rem;">AI Pose Estimation</strong>
+                <p style="font-size: 0.85rem; color: var(--ink-secondary); margin-top: 4px; outline: none; cursor: text; background-color: transparent;" id="edit-block-36" contenteditable="false">Using MediaPipe/OpenPose to track joint angles during jumps and landings to monitor knee alignment and avoid risky reinjury patterns.</p>
+              </div>
+              <div class="scrap-card aged">
+                <strong style="color: var(--accent-clay); font-family: var(--font-serif); font-size: 1.05rem;">AR Court Overlays &amp; VR</strong>
+                <p style="font-size: 0.85rem; color: var(--ink-secondary); margin-top: 4px; outline: none; cursor: text; background-color: transparent;" id="edit-block-37" contenteditable="false">Using browser AR to project tactical drill markers on the court, or VR mental rehearsals on high-pain days without physical joint load.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Polaroids & Authentic Stickers -->
+          <div class="journal-sidebar-collage">
+            <!-- Polaroid: Dance & Basketball Collages -->
+            <div class="polaroid-frame tilt-right" style="transition: transform 0.15s;">
+              <div class="washi-tape tape-top-center tape-sage"></div>
+              <div class="polaroid-img-box">
+                <img src="assets/1000457479.jpg" alt="Basketball court snapshot" onerror="this.src='assets/Dynamic GUPTA Basketball Sticker.png';">
+              </div>
+              <div class="polaroid-caption" id="edit-block-38" contenteditable="false" style="outline: none; cursor: text; background-color: transparent;">knee injury in my 1st year</div>
+            </div>
+
+            <!-- Authentic Dance Sticker -->
+            <div style="position: relative; margin: 20px auto; text-align: center;">
+              <img src="assets/Dancing Woman in Blue Kurta Sticker.png" alt="Dance Sticker" style="max-width: 170px; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.15)); transform: rotate(-2deg);" onerror="this.style.display='none';">
+              <span style="font-family: var(--font-hand); font-size: 1.15rem; color: var(--accent-rose); display: block; margin-top: 6px;">"Dance gives me rhythm; basketball gives me grit."</span>
+            </div>
+
+            <!-- Polaroid: Dance Practice Snapshot -->
+            <div class="polaroid-frame tilt-left" style="margin-top: 10px; transition: transform 0.15s;">
+              <div class="washi-tape tape-top-center tape-rose"></div>
+              <div class="polaroid-img-box">
+                <img src="assets/1000457482.jpg" alt="Dance society rehearsal snapshot" onerror="this.src='assets/Breakdance Queen Sticker.png';">
+              </div>
+              <div class="polaroid-caption" id="edit-block-39" contenteditable="false" style="outline: none; cursor: text; background-color: transparent;">Captaining AIU &amp; Meerut basketball
+              </div>
+            </div>
+
+            <!-- Sticky Note on Goal -->
+            <div class="sticky-note sticky-yellow rotate-right" style="margin-top: 24px; outline: none; cursor: text; background-color: transparent;" id="edit-block-40" contenteditable="false">
+              <span class="sticky-pin"></span>
+              <span class="sticky-title">Grounded Outlook</span>
+              "Neither dance nor basketball will be my career, but both will stay my lifelong stress relief. My career goal is to start as a data scientist / software engineer and grow into leadership."
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================================
+           PAGE 05 — P4: RESUME-TO-JOB GAP ANALYZER
+           =================================================================== -->
+      <section class="chapter-page" id="page-5" data-title="P4: Resume Gap Analyzer" data-date="Nov 2026 • Notebook Entry #5">
+        <div class="page-header">
+          <span class="page-stamp">CHAPTER 05 • PROJECT P4</span>
+          <h1 class="page-title">Resume-to-Job Gap Analyzer
+            <span class="hand-note-header">(the duplicate data discovery)</span>
+          </h1>
+          <p class="page-subtitle">Extracting skills from resumes, classifying fit, and catching a critical data leakage trap that changed our metrics.</p>
+        </div>
+
+        <div class="scrap-grid-2">
+          <!-- Left Column: Story & Deduplication Insight -->
+          <div class="journal-narrative">
+            <h3 style="font-family: var(--font-serif); font-size: 1.35rem; margin-bottom: 8px;">What We Built</h3>
+            <p id="edit-block-41" contenteditable="false" style="outline: none; cursor: text; background-color: transparent;">
+              The Resume-to-Job Gap Analyzer is an end-to-end Python web tool that compares candidate resumes against job description requirements. Instead of relying on vague black-box AI summaries, it maps extracted text against a curated <span class="hand-highlight">73-skill taxonomy</span>, calculates match percentages across critical domains, and uses a trained LinearSVC model to classify overall role suitability.
+            </p>
+
+            <!-- Metrics Card Grid -->
+            <div class="scrap-grid-3" style="margin: 20px 0;">
+              <div class="metric-scrap">
+                <span class="metric-label">Taxonomy Size</span>
+                <div class="metric-val">73 Skills</div>
+                <div class="metric-sub">Languages, ML, Cloud, Databases, Tools</div>
+              </div>
+              <div class="metric-scrap">
+                <span class="metric-label">Extraction F1</span>
+                <div class="metric-val" style="color: var(--accent-sage);">95.2%</div>
+                <div class="metric-sub">Rigorous token-matching precision &amp; recall</div>
+              </div>
+              <div class="metric-scrap">
+                <span class="metric-label">Fit Accuracy</span>
+                <div class="metric-val" style="color: var(--accent-terracotta);">90.9%</div>
+                <div class="metric-sub">LinearSVC fit classifier (post-deduplication)</div>
+              </div>
+            </div>
+
+            <div class="ruled-divider"></div>
+
+            <!-- The Big Learning: Deduplication / Data Leakage -->
+            <h3 style="font-family: var(--font-serif); font-size: 1.35rem; margin-bottom: 8px;">The Pivotal Discovery: Duplicate Data Trap</h3>
+            <p id="edit-block-42" contenteditable="false" style="outline: none; cursor: text; background-color: transparent;">
+              During early model runs, our test metrics looked suspiciously great—almost 99% accuracy. For a moment, it was tempting to celebrate and put the numbers in the report. But anyone in machine learning knows that near-perfect accuracy on noisy text is usually a red flag.
+            </p>
+            <p style="margin-top: 14px; outline: none; cursor: text; background-color: transparent;" id="edit-block-43" contenteditable="false">
+              When I investigated the raw dataset, I discovered that multiple near-identical resume entries existed across both the training and test splits. The model hadn't learned generalized skill relationships; it was memorizing duplicates that had leaked across the partition.
+            </p>
+
+            <!-- Interactive Before/After Deduplication Comparison Widget -->
+            <div class="dedup-toggle-box">
+              <div class="dedup-nav">
+                <button class="dedup-btn active" data-view="after">After Deduplication (Honest &amp; Real)</button>
+                <button class="dedup-btn" data-view="before">Before Deduplication (The Illusion)</button>
+              </div>
+
+              <div class="dedup-view active" id="view-after">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px;">
+                  <strong style="color: var(--accent-sage); font-size: 0.95rem;">Rigorous Deduplicated Pipeline (Our Final Submission):</strong>
+                  <span class="progress-pill" style="background: #eaf5ea; border-color: #bad9b7; color: #2e5929;">Clean &amp; Reliable</span>
+                </div>
+                <p style="font-size: 0.88rem; color: var(--ink-secondary); outline: none; cursor: text; background-color: transparent;" id="edit-block-44" contenteditable="false">
+                  Removed all duplicate text rows, rebuilt the vocabulary, and tested strictly on unseen candidate resumes. Result: <strong>90.9% fit accuracy</strong> and <strong>95.2% skill extraction F1</strong>. These numbers are genuine and hold up on unseen files.
+                </p>
+              </div>
+
+              <div class="dedup-view" id="view-before">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px;">
+                  <strong style="color: var(--accent-clay); font-size: 0.95rem;">Flawed Raw Split (Data Leakage):</strong>
+                  <span class="progress-pill" style="background: #fdf0f0; border-color: #f0c3c3; color: #8c2b2b;">Artificially Inflated</span>
+                </div>
+                <p style="font-size: 0.88rem; color: var(--ink-secondary); outline: none; cursor: text; background-color: transparent;" id="edit-block-45" contenteditable="false">
+                  Early raw dataset contained duplicate resume entries that bled across train and test partitions. Accuracy appeared to be 98.7%, but the model was simply recognizing repeated text. Discovering and cleaning this was my proudest debugging moment.
+                </p>
+              </div>
+            </div>
+
+            <!-- 73-Skill Taxonomy Cloud -->
+            <h4 style="font-family: var(--font-serif); font-size: 1.15rem; margin-top: 24px; margin-bottom: 6px;">A Glimpse of the 73-Skill Taxonomy:</h4>
+            <div class="skill-cluster-cloud">
+              <span class="skill-tag tag-matched">Python</span>
+              <span class="skill-tag tag-matched">Scikit-learn</span>
+              <span class="skill-tag tag-matched">Pandas</span>
+              <span class="skill-tag tag-matched">TF-IDF</span>
+              <span class="skill-tag tag-matched">LinearSVC</span>
+              <span class="skill-tag tag-matched">Streamlit</span>
+              <span class="skill-tag tag-matched">SQL</span>
+              <span class="skill-tag tag-matched">Git</span>
+              <span class="skill-tag tag-matched">Docker</span>
+              <span class="skill-tag tag-matched">FastAPI</span>
+              <span class="skill-tag tag-matched">Kafka</span>
+              <span class="skill-tag tag-matched">Power BI</span>
+              <span class="skill-tag tag-gap">Legacy Excel</span>
+              <span class="skill-tag tag-matched">+ 60 More Skills</span>
+            </div>
+          </div>
+
+          <!-- Right Column: Real Project Screenshots -->
+          <div class="journal-sidebar-collage">
+            <!-- Polaroid: Real Home Screenshot -->
+            <div class="polaroid-frame tilt-right">
+              <div class="washi-tape tape-top-center tape-rose"></div>
+              <div class="polaroid-img-box">
+                <img src="assets/1_home.png" alt="Resume Gap Analyzer Streamlit Interface">
+              </div>
+              <div class="polaroid-caption" id="edit-block-46" contenteditable="false" style="outline: none; cursor: text; background-color: transparent;">
+                Streamlit App: Home &amp; Architecture
+                <span class="photo-badge-date">End-to-end interactive workflow in Python</span>
+              </div>
+            </div>
+
+            <!-- Polaroid: Real Analyzer Screen -->
+            <div class="polaroid-frame tilt-left" style="margin-top: 24px;">
+              <div class="washi-tape tape-top-center tape-sage"></div>
+              <div class="polaroid-img-box">
+                <img src="assets/4_analyzer.png" alt="Analyzer Skill Gap Output">
+              </div>
+              <div class="polaroid-caption" id="edit-block-47" contenteditable="false" style="outline: none; cursor: text; background-color: transparent;">
+                Live Skill Extraction &amp; Gap Breakdown
+                <span class="photo-badge-date">Comparing parsed candidate tokens against job requirements</span>
+              </div>
+            </div>
+
+            <!-- Sticky Note on Data Ethics -->
+            <div class="sticky-note sticky-mint rotate-left" style="margin-top: 24px; outline: none; cursor: text; background-color: transparent;" id="edit-block-48" contenteditable="false">
+              <span class="sticky-pin"></span>
+              <span class="sticky-title">Note on Data Integrity</span>
+              "In school, getting 99% on an assignment feels like an A+. In machine learning, getting 99% usually means you leaked the answers into your test set. Being honest about data leakage is what separates a student from an engineer."
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================================
+           PAGE 06 — WHAT COMES NEXT
+           =================================================================== -->
+      <section class="chapter-page active-page" id="page-6" data-title="P5: What Comes Next" data-date="Nov 2026 • Notebook Entry #6">
+        <div class="page-header">
+          <span class="page-stamp">CHAPTER 06 • LOOKING FORWARD</span>
+          <h1 class="page-title">What Comes Next: Staying Grounded
+            <span class="hand-note-header">(the engineer I want to become)</span>
+          </h1>
+          <p class="page-subtitle">Reflections on growth across ET401, preparing for my NIIT internship, and the skills I still need to master.</p>
+        </div>
+
+        <div class="scrap-grid-2">
+          <!-- Left Column: Final Synthesis -->
+          <div class="journal-narrative">
+            <h3 style="font-family: var(--font-serif); font-size: 1.35rem; margin-bottom: 8px;">Looking Back Over the Journey</h3>
+            <p id="edit-block-49" contenteditable="false" style="outline: none; cursor: text; background-color: transparent;">
+              When this semester began, I thought being good at technology just meant writing working code quickly. Across these five chapters, that definition changed completely:
+            </p>
+            <ul style="padding-left: 20px; color: var(--ink-secondary); line-height: 1.7; font-size: 0.95rem; margin-top: 10px;">
+              <li><strong>In P1 (EcoSmart):</strong> I learned that taking over an existing codebase requires humbleness and careful reading rather than hasty rewriting.</li>
+              <li><strong>In P2 (LPL Mentoring):</strong> I realized that technical leadership is about empowering peers to debug their own work, rather than grabbing the keyboard.</li>
+              <li><strong>In P3 (Self-Reflection):</strong> I connected my kinesthetic learning style to my passions in basketball and dance, acknowledging that adversity—like injuries and the heartbreaking loss of coach Yadav sir—is where real character is built.</li>
+              <li><strong>In P4 (Resume Gap Analyzer):</strong> I learned that confronting data leakage and choosing an honest 90.9% over a fake 99% is the true test of engineering integrity.</li>
+            </ul>
+
+            <div class="ruled-divider"></div>
+
+            <h3 style="font-family: var(--font-serif); font-size: 1.35rem; margin-bottom: 8px;">What I Still Need to Improve (No Pretense)</h3>
+            <p id="edit-block-50" contenteditable="false" style="outline: none; cursor: text; background-color: transparent;">
+              I am not a complete, all-knowing software architect yet, and pretending to be one would be dishonest. Here are the specific areas I know I need to develop next:
+            </p>
+
+            <div class="scrap-grid-2-even" style="margin-top: 14px;">
+              <div class="scrap-card aged">
+                <strong style="color: var(--ink-primary); font-family: var(--font-serif);">Distributed Systems &amp; Streaming</strong>
+                <p style="font-size: 0.85rem; color: var(--ink-secondary); margin-top: 4px; outline: none; cursor: text; background-color: transparent;" id="edit-block-51" contenteditable="false">Going deeper into Kafka partition strategies, event-driven backends, and low-latency websockets beyond isolated lab scripts.</p>
+              </div>
+              <div class="scrap-card aged">
+                <strong style="color: var(--accent-terracotta); font-family: var(--font-serif);">Production ML &amp; Drift Detection</strong>
+                <p style="font-size: 0.85rem; color: var(--ink-secondary); margin-top: 4px; outline: none; cursor: text; background-color: transparent;" id="edit-block-52" contenteditable="false">Moving from local Jupyter prototypes to automated model deployment, population stability index (PSI) monitoring, and CI/CD pipelines.</p>
+              </div>
+            </div>
+
+            <h3 style="font-family: var(--font-serif); font-size: 1.3rem; margin-top: 22px; margin-bottom: 8px;">The Upcoming Step: NIIT Internship</h3>
+            <p id="edit-block-53" contenteditable="false" style="outline: none; cursor: text; background-color: transparent;">I've taken a step closer to my dreams! I've been shortlisted for the <strong>Data Scientist Intern</strong> role at <strong>FlyNava Technologies</strong>. A new journey awaits, filled with real-world challenges, learning, and opportunities to grow.<p id="edit-block-54" contenteditable="false" style="outline: none; background-color: transparent;"><strong>One step closer, many more to go.</strong></p></p>
+            <p style="margin-top: 12px; outline: none; cursor: text; background-color: transparent;" id="edit-block-54" contenteditable="false">
+              My approach will remain what it has always been: keep the athlete's drill discipline, the dancer's attention to rhythm and timing, and the student's curiosity to keep asking questions until the architecture makes complete sense.
+            </p>
+          </div>
+
+          <!-- Right Column: Final Sign-off Polaroid & Note -->
+          <div class="journal-sidebar-collage">
+            <!-- Signed Polaroid -->
+            <div class="polaroid-frame tilt-right">
+              <div class="washi-tape tape-top-center tape-rose"></div>
+              <div class="polaroid-img-box">
+                <img src="assets/1000457481.jpg" alt="Final journal entry sign-off" onerror="this.src='assets/GUPTA Jersey Basketball Doodle.png';">
+              </div>
+              <div class="polaroid-caption" id="edit-block-55" contenteditable="false" style="outline: none; cursor: text; background-color: transparent;">
+                "Keep your basics strong and you will be great in everything."
+                <span class="photo-badge-date">Riya Gupta • ET401 Final Submission</span>
+              </div>
+            </div>
+
+            <!-- Final Sticky Note -->
+            <div class="sticky-note sticky-yellow rotate-left" style="margin-top: 24px; outline: none; cursor: text; background-color: transparent;" id="edit-block-56" contenteditable="false">
+              <span class="sticky-pin"></span>
+              <span class="sticky-title">Final Reflection</span>
+              "Technology is a craft learned through practice, curiosity, and honesty. You don't master it by looking polished; you master it by staying in the lab, fixing the breaks, and helping your team along the way."
+              <div style="margin-top: 10px; font-weight: 700; text-align: right; color: var(--ink-primary); font-size: 1.15rem;">— Riya Gupta</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Bottom Journal Flipping Navigation Controls -->
+      <nav class="journal-footer-nav" aria-label="Page Turning Navigation">
+        <button class="nav-flip-btn" id="prevPageBtn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+          <span id="prevBtnLabel">← P4: Resume Gap</span>
+        </button>
+
+        <div class="nav-page-num" id="footerPageNum">Entry 6 of 6 • P5: What Comes Next</div>
+
+        <button class="nav-flip-btn" id="nextPageBtn" disabled="">
+          <span id="nextBtnLabel">Journal Complete</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </button>
+      </nav>
+
+    </main>
+  </div>
+
+  <!-- Interactive Reflections Scratchpad Drawer (Sticky Notepad) -->
+  <div class="scratchpad-panel" id="scratchpadPanel">
+    <div class="scratchpad-header">
+      <span>✏️ Personal Journal Scratchpad</span>
+      <button class="scratchpad-close" id="closeScratchBtn" aria-label="Close scratchpad">✕</button>
+    </div>
+    <textarea class="scratchpad-textarea" id="scratchpadInput" placeholder="Jot down quick thoughts, notes for your viva, or personal ideas here..."></textarea>
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 6px; font-size: 0.85rem; color: #635b54;">
+      <span id="scratchSaveStatus">Auto-saves locally</span>
+      <button class="desk-btn" style="padding: 3px 8px; font-size: 0.75rem;" id="clearScratchBtn">Clear</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+
+
+</body></html>

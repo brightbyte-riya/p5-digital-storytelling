@@ -1,0 +1,1373 @@
+/* ==========================================================================
+   P5 ET401 DIGITAL STORYTELLING — STUDENT REFLECTIVE JOURNAL & SCRAPBOOK
+   Author: Riya Gupta (BT23GCS453) | Course: ET 401 Learning Technologies
+   Aesthetic: Authentic, tactile, handmade student scrapbook & reflective journal
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..600&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
+
+:root {
+  /* Warm Scrapbook Palette */
+  --bg-desk: #ece5d8;
+  --bg-journal: #fbf8f1;
+  --bg-journal-alt: #f4efe4;
+  --paper-cream: #fdfbf7;
+  --paper-aged: #f3ece0;
+  --paper-lined: #fcf9f2;
+
+  /* Ink & Text */
+  --ink-primary: #2d2621;
+  --ink-secondary: #574c43;
+  --ink-muted: #82756a;
+  --ink-blue: #1e3a5f;
+  --ink-pencil: #635b54;
+
+  /* Accent Tones (Natural, earthy, faded) */
+  --accent-rose: #c87679;
+  --accent-rose-soft: #ebd0d1;
+  --accent-sage: #5b6e54;
+  --accent-sage-soft: #d3ded0;
+  --accent-ochre: #c98e3b;
+  --accent-ochre-soft: #faeecf;
+  --accent-clay: #9c604a;
+  --accent-terracotta: #b86246;
+  --accent-tape: rgba(226, 208, 179, 0.78);
+  --accent-tape-rose: rgba(220, 168, 170, 0.72);
+  --accent-tape-sage: rgba(162, 184, 157, 0.72);
+
+  /* Sticky Notes */
+  --sticky-yellow: #fbf1aa;
+  --sticky-pink: #f7d6d7;
+  --sticky-mint: #daf0e0;
+  --sticky-blue: #d9e9f5;
+
+  /* Borders & Shadows */
+  --border-paper: #ded5c3;
+  --border-sketch: #382e27;
+  --shadow-paper: 0 10px 30px rgba(45, 38, 33, 0.08), 0 2px 8px rgba(45, 38, 33, 0.05);
+  --shadow-polaroid: 0 6px 18px rgba(45, 38, 33, 0.12), 0 2px 4px rgba(45, 38, 33, 0.08);
+  --shadow-lift: 0 14px 28px rgba(45, 38, 33, 0.12), 0 6px 10px rgba(45, 38, 33, 0.06);
+
+  /* Fonts */
+  --font-serif: 'Fraunces', Georgia, serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-editorial: 'Newsreader', Georgia, serif;
+  --font-hand: 'Caveat', cursive, sans-serif;
+  --font-code: 'Space Mono', monospace;
+
+  --page-max-w: 1140px;
+}
+
+/* Base reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--ink-primary);
+  background-color: var(--bg-desk);
+  background-image: 
+    radial-gradient(#dfd5c5 1px, transparent 1px),
+    linear-gradient(to right, rgba(0,0,0,0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0,0,0,0.02) 1px, transparent 1px);
+  background-size: 24px 24px, 48px 48px, 48px 48px;
+  min-height: 100vh;
+  line-height: 1.65;
+  padding: 24px 16px 80px 16px;
+  overflow-x: hidden;
+}
+
+/* Selection */
+::selection {
+  background-color: var(--accent-ochre-soft);
+  color: var(--ink-primary);
+}
+
+/* ==========================================================================
+   DESK TOP BAR / JOURNAL CONTROLS
+   ========================================================================== */
+.desk-header {
+  max-width: var(--page-max-w);
+  margin: 0 auto 18px auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 8px 12px;
+}
+
+.journal-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.badge-seal {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--accent-sage);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 0.95rem;
+  box-shadow: inset 0 0 0 2px rgba(255,255,255,0.4), 0 2px 6px rgba(0,0,0,0.15);
+  transform: rotate(-6deg);
+}
+
+.journal-meta {
+  font-size: 0.85rem;
+  color: var(--ink-secondary);
+  line-height: 1.25;
+}
+
+.journal-meta strong {
+  font-family: var(--font-serif);
+  color: var(--ink-primary);
+  font-size: 0.95rem;
+  display: block;
+}
+
+.desk-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.desk-btn {
+  background: var(--paper-cream);
+  border: 1px solid var(--border-paper);
+  color: var(--ink-secondary);
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 7px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  transition: all 0.2s ease;
+}
+
+.desk-btn:hover {
+  background: #ffffff;
+  color: var(--ink-primary);
+  border-color: var(--ink-muted);
+  transform: translateY(-1px);
+}
+
+.desk-btn.btn-print {
+  background: var(--accent-sage);
+  color: #ffffff;
+  border-color: var(--accent-sage);
+}
+
+.desk-btn.btn-print:hover {
+  background: #4a5c44;
+}
+
+.desk-btn.btn-edit.active {
+  background: var(--accent-ochre);
+  color: #fff;
+  border-color: var(--accent-ochre);
+}
+
+/* ==========================================================================
+   JOURNAL BINDER & TABS
+   ========================================================================== */
+.journal-wrapper {
+  max-width: var(--page-max-w);
+  margin: 0 auto;
+  position: relative;
+}
+
+/* Index Tabs (Sticking out of journal) */
+.journal-index-tabs {
+  display: flex;
+  gap: 4px;
+  padding-left: 20px;
+  position: relative;
+  z-index: 2;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  padding-bottom: 2px;
+}
+
+.journal-index-tabs::-webkit-scrollbar {
+  height: 4px;
+}
+
+.journal-index-tabs::-webkit-scrollbar-thumb {
+  background: var(--border-paper);
+  border-radius: 4px;
+}
+
+.index-tab {
+  border: 1px solid var(--border-paper);
+  border-bottom: none;
+  background: var(--bg-journal-alt);
+  color: var(--ink-secondary);
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 8px 16px 10px 16px;
+  border-radius: 8px 8px 0 0;
+  cursor: pointer;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  position: relative;
+  transition: all 0.2s ease;
+  box-shadow: 0 -2px 5px rgba(0,0,0,0.03);
+}
+
+.index-tab .tab-num {
+  font-family: var(--font-code);
+  font-size: 0.72rem;
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: rgba(0,0,0,0.06);
+  color: var(--ink-secondary);
+}
+
+.index-tab:hover {
+  background: #fdfbf7;
+  color: var(--ink-primary);
+  transform: translateY(-2px);
+}
+
+.index-tab.active {
+  background: var(--paper-cream);
+  color: var(--ink-primary);
+  font-weight: 700;
+  border-color: var(--border-paper);
+  padding-top: 10px;
+  margin-top: -2px;
+  box-shadow: 0 -3px 8px rgba(0,0,0,0.05);
+}
+
+.index-tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: var(--paper-cream);
+  z-index: 10;
+}
+
+.index-tab.tab-p1.active { border-top: 3px solid var(--accent-sage); }
+.index-tab.tab-p2.active { border-top: 3px solid var(--accent-clay); }
+.index-tab.tab-p3.active { border-top: 3px solid var(--accent-rose); }
+.index-tab.tab-p4.active { border-top: 3px solid var(--accent-ochre); }
+.index-tab.tab-p5.active { border-top: 3px solid var(--accent-terracotta); }
+.index-tab.tab-intro.active { border-top: 3px solid var(--ink-pencil); }
+
+/* Journal Physical Container */
+.journal-book {
+  background: var(--paper-cream);
+  border: 1px solid var(--border-paper);
+  border-radius: 6px;
+  box-shadow: var(--shadow-paper), 0 0 0 1px rgba(255,255,255,0.7) inset;
+  position: relative;
+  overflow: visible;
+  padding: 40px 48px;
+}
+
+/* Spiral / Ring Binder on Left for Desktop */
+.journal-book::before {
+  content: '';
+  position: absolute;
+  left: 20px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  border-right: 1px dashed rgba(190, 175, 155, 0.6);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Stitched bookmark ribbon hanging from top right */
+.bookmark-ribbon {
+  position: absolute;
+  top: -10px;
+  right: 50px;
+  width: 24px;
+  height: 52px;
+  background: var(--accent-terracotta);
+  border-radius: 2px 2px 0 0;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  z-index: 20;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 50% 80%, 0% 100%);
+  transition: transform 0.3s ease;
+}
+
+.bookmark-ribbon:hover {
+  transform: translateY(4px);
+}
+
+/* Progress Tracker Bar (Book-style) */
+.journal-progress-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-paper);
+  padding-bottom: 16px;
+  margin-bottom: 32px;
+  font-size: 0.85rem;
+  color: var(--ink-secondary);
+}
+
+.progress-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.progress-date {
+  font-family: var(--font-hand);
+  font-size: 1.25rem;
+  color: var(--ink-primary);
+  font-weight: 700;
+  transform: rotate(-1deg);
+}
+
+.progress-divider {
+  color: var(--border-paper);
+}
+
+.progress-pill {
+  font-family: var(--font-code);
+  font-size: 0.78rem;
+  background: var(--paper-aged);
+  padding: 3px 8px;
+  border-radius: 4px;
+  border: 1px solid var(--border-paper);
+}
+
+.progress-indicators {
+  display: flex;
+  gap: 6px;
+}
+
+.prog-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1px solid var(--border-paper);
+  background: var(--paper-aged);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.prog-dot.active {
+  background: var(--accent-terracotta);
+  border-color: var(--accent-terracotta);
+  transform: scale(1.2);
+}
+
+/* ==========================================================================
+   CHAPTER PAGE CONTAINER & LAYOUT
+   ========================================================================== */
+.chapter-page {
+  display: none;
+  animation: pageFadeIn 0.35s ease;
+  position: relative;
+}
+
+.chapter-page.active-page {
+  display: block;
+}
+
+@keyframes pageFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Chapter Heading Header */
+.page-header {
+  margin-bottom: 36px;
+  position: relative;
+}
+
+.page-stamp {
+  display: inline-block;
+  font-family: var(--font-hand);
+  font-size: 1.15rem;
+  color: var(--accent-rose);
+  font-weight: 700;
+  border: 1.5px dashed var(--accent-rose);
+  padding: 2px 10px;
+  border-radius: 4px;
+  transform: rotate(-2deg);
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+}
+
+.page-title {
+  font-family: var(--font-serif);
+  font-size: 2.35rem;
+  line-height: 1.18;
+  color: var(--ink-primary);
+  letter-spacing: -0.5px;
+  font-weight: 700;
+  position: relative;
+}
+
+.page-subtitle {
+  font-family: var(--font-editorial);
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--ink-secondary);
+  margin-top: 6px;
+}
+
+.hand-note-header {
+  font-family: var(--font-hand);
+  font-size: 1.25rem;
+  color: var(--accent-clay);
+  display: inline-block;
+  margin-left: 12px;
+  transform: rotate(1deg);
+}
+
+/* Editorial line rule */
+.ruled-divider {
+  height: 2px;
+  background: repeating-linear-gradient(90deg, var(--border-paper), var(--border-paper) 6px, transparent 6px, transparent 12px);
+  margin: 28px 0;
+}
+
+/* ==========================================================================
+   SCRAPBOOK TACTILE COMPONENTS
+   ========================================================================== */
+
+/* Washi Tape Strip */
+.washi-tape {
+  position: absolute;
+  height: 24px;
+  background-color: var(--accent-tape);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  z-index: 5;
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+.tape-top-center {
+  top: -12px;
+  left: 50%;
+  width: 120px;
+  transform: translateX(-50%) rotate(-1deg);
+  border-left: 3px dotted rgba(160, 140, 110, 0.4);
+  border-right: 3px dotted rgba(160, 140, 110, 0.4);
+}
+
+.tape-corner-left {
+  top: -10px;
+  left: -15px;
+  width: 70px;
+  transform: rotate(-35deg);
+}
+
+.tape-corner-right {
+  top: -10px;
+  right: -15px;
+  width: 70px;
+  transform: rotate(35deg);
+}
+
+.tape-rose {
+  background-color: var(--accent-tape-rose);
+}
+
+.tape-sage {
+  background-color: var(--accent-tape-sage);
+}
+
+/* Sticky Note */
+.sticky-note {
+  background-color: var(--sticky-yellow);
+  padding: 22px 20px 24px 20px;
+  border-radius: 2px;
+  box-shadow: 0 6px 14px rgba(45, 38, 33, 0.09), 0 2px 4px rgba(45, 38, 33, 0.05);
+  font-family: var(--font-hand);
+  font-size: 1.25rem;
+  line-height: 1.45;
+  color: #382c20;
+  position: relative;
+  margin: 20px 0;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.sticky-note:hover {
+  transform: rotate(0deg) scale(1.02);
+  box-shadow: 0 10px 20px rgba(45, 38, 33, 0.12);
+}
+
+.sticky-note.rotate-left {
+  transform: rotate(-1.5deg);
+}
+
+.sticky-note.rotate-right {
+  transform: rotate(1.8deg);
+}
+
+.sticky-note.sticky-pink {
+  background-color: var(--sticky-pink);
+  color: #4a2829;
+}
+
+.sticky-note.sticky-mint {
+  background-color: var(--sticky-mint);
+  color: #273e2e;
+}
+
+.sticky-note.sticky-blue {
+  background-color: var(--sticky-blue);
+  color: #1e3344;
+}
+
+.sticky-pin {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #e65c5c, #941f1f);
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.sticky-title {
+  font-weight: 700;
+  font-size: 1.35rem;
+  margin-bottom: 6px;
+  color: var(--ink-primary);
+  display: block;
+}
+
+/* Polaroid & Photo Frames */
+.polaroid-frame {
+  background: #ffffff;
+  padding: 12px 12px 18px 12px;
+  border: 1px solid #e8e0d2;
+  box-shadow: var(--shadow-polaroid);
+  position: relative;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+  min-height: min-content;
+  box-sizing: border-box;
+  overflow: visible;
+}
+
+.polaroid-frame:hover {
+  transform: rotate(0deg) scale(1.015);
+  box-shadow: var(--shadow-lift);
+  z-index: 25;
+}
+
+.polaroid-frame.tilt-left {
+  transform: rotate(-1.6deg);
+}
+
+.polaroid-frame.tilt-right {
+  transform: rotate(1.8deg);
+}
+
+.polaroid-img-box {
+  width: 100%;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  background: #252220;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.polaroid-img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.polaroid-frame:hover .polaroid-img-box img {
+  transform: scale(1.03);
+}
+
+.polaroid-caption {
+  position: relative;
+  display: block;
+  width: 100%;
+  margin-top: 12px;
+  padding: 2px 4px 0 4px;
+  text-align: center;
+  font-family: var(--font-hand);
+  font-size: 1.25rem;
+  color: var(--ink-secondary);
+  line-height: 1.35;
+  box-sizing: border-box;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  z-index: 2;
+}
+
+.photo-badge-date {
+  font-family: var(--font-code);
+  font-size: 0.74rem;
+  color: var(--ink-muted);
+  display: block;
+  margin-top: 6px;
+  line-height: 1.35;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Hand-drawn Underlines & Highlights */
+.hand-highlight {
+  background: linear-gradient(104deg, rgba(250, 238, 164, 0) 0.5%, rgba(250, 238, 164, 0.75) 2.5%, rgba(250, 238, 164, 0.7) 97%, rgba(250, 238, 164, 0) 99.5%);
+  padding: 0 4px;
+  border-radius: 2px;
+}
+
+.hand-highlight-sage {
+  background: linear-gradient(104deg, rgba(211, 222, 208, 0) 0.5%, rgba(211, 222, 208, 0.8) 2.5%, rgba(211, 222, 208, 0.7) 97%, rgba(211, 222, 208, 0) 99.5%);
+  padding: 0 4px;
+}
+
+.hand-highlight-rose {
+  background: linear-gradient(104deg, rgba(235, 208, 209, 0) 0.5%, rgba(235, 208, 209, 0.8) 2.5%, rgba(235, 208, 209, 0.7) 97%, rgba(235, 208, 209, 0) 99.5%);
+  padding: 0 4px;
+}
+
+.wavy-underline {
+  text-decoration: underline wavy var(--accent-rose) 2px;
+  text-underline-offset: 4px;
+}
+
+.doodle-arrow {
+  font-family: var(--font-hand);
+  font-size: 1.6rem;
+  color: var(--accent-terracotta);
+  display: inline-block;
+  line-height: 1;
+}
+
+/* Margin Annotations / Teacher & Student Comments */
+.margin-note {
+  font-family: var(--font-hand);
+  font-size: 1.25rem;
+  line-height: 1.35;
+  color: var(--accent-clay);
+  border-left: 2px solid var(--accent-clay);
+  padding-left: 10px;
+  margin: 12px 0;
+  display: block;
+}
+
+/* Paper card with deckled / sketch border */
+.scrap-card {
+  background: var(--paper-cream);
+  border: 1px solid var(--border-paper);
+  border-radius: 4px;
+  padding: 24px;
+  position: relative;
+  box-shadow: 0 3px 10px rgba(45, 38, 33, 0.05);
+}
+
+.scrap-card.aged {
+  background: var(--paper-aged);
+}
+
+.scrap-card.lined-bg {
+  background-color: var(--paper-lined);
+  background-image: linear-gradient(transparent, transparent 27px, #e8dfcf 28px);
+  background-size: 100% 28px;
+  line-height: 28px;
+}
+
+/* Asymmetric 2-column layout */
+.scrap-grid-2 {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+.scrap-grid-2-even {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+.scrap-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  align-items: start;
+}
+
+/* ==========================================================================
+   METRIC TILES / PROJECT DETAILS (Tactile Cards)
+   ========================================================================== */
+.metric-scrap {
+  background: #ffffff;
+  border: 1px solid var(--border-paper);
+  padding: 16px;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  position: relative;
+  transition: transform 0.2s ease;
+}
+
+.metric-scrap:hover {
+  transform: translateY(-2px);
+  border-color: var(--ink-muted);
+}
+
+.metric-label {
+  font-family: var(--font-code);
+  font-size: 0.75rem;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.metric-val {
+  font-family: var(--font-serif);
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: var(--ink-primary);
+  line-height: 1.1;
+}
+
+.metric-sub {
+  font-size: 0.8rem;
+  color: var(--ink-secondary);
+  margin-top: 4px;
+}
+
+/* Contribution Gauge / Honest Breakdown */
+.contribution-box {
+  background: var(--paper-aged);
+  border: 1px solid var(--border-paper);
+  border-radius: 6px;
+  padding: 20px 24px;
+  margin: 20px 0;
+  position: relative;
+}
+
+.contrib-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 12px;
+}
+
+.contrib-title {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--ink-primary);
+}
+
+.contrib-badge {
+  font-family: var(--font-hand);
+  font-size: 1.25rem;
+  color: var(--accent-sage);
+  font-weight: 700;
+}
+
+.contrib-split-bar {
+  display: flex;
+  height: 28px;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--border-paper);
+  margin-bottom: 12px;
+}
+
+.contrib-segment-prior {
+  background: #ded5c4;
+  color: var(--ink-secondary);
+  font-size: 0.78rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  border-right: 2px dashed #b8a994;
+}
+
+.contrib-segment-riya {
+  background: var(--accent-sage);
+  color: #ffffff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20%;
+  letter-spacing: 0.5px;
+}
+
+.contrib-legend {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.82rem;
+  color: var(--ink-secondary);
+}
+
+/* ==========================================================================
+   SKILLS & LAB TAXONOMY (P4 / Gap Analyzer)
+   ========================================================================== */
+.skill-cluster-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.skill-tag {
+  background: var(--paper-cream);
+  border: 1px solid var(--border-paper);
+  font-family: var(--font-code);
+  font-size: 0.78rem;
+  padding: 4px 9px;
+  border-radius: 4px;
+  color: var(--ink-secondary);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.2s ease;
+}
+
+.skill-tag.tag-matched {
+  background: #ebf5ea;
+  border-color: #bad9b7;
+  color: #2e5929;
+}
+
+.skill-tag.tag-gap {
+  background: #fdf0f0;
+  border-color: #f0c3c3;
+  color: #8c2b2b;
+  text-decoration: line-through;
+}
+
+/* ==========================================================================
+   INTERACTIVE COMPARISON TABS (Before / After deduplication)
+   ========================================================================== */
+.dedup-toggle-box {
+  background: #ffffff;
+  border: 1px solid var(--border-paper);
+  border-radius: 6px;
+  padding: 20px;
+  margin: 20px 0;
+}
+
+.dedup-nav {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--border-paper);
+  padding-bottom: 8px;
+}
+
+.dedup-btn {
+  background: none;
+  border: none;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  color: var(--ink-secondary);
+  transition: all 0.2s ease;
+}
+
+.dedup-btn.active {
+  background: var(--paper-aged);
+  color: var(--ink-primary);
+  font-weight: 700;
+}
+
+.dedup-view {
+  display: none;
+}
+
+.dedup-view.active {
+  display: block;
+}
+
+/* ==========================================================================
+   JOURNAL NAVIGATION FOOTER (Flip Page)
+   ========================================================================== */
+.journal-footer-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--border-paper);
+  margin-top: 48px;
+  padding-top: 24px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.nav-flip-btn {
+  background: var(--paper-cream);
+  border: 1px solid var(--border-paper);
+  color: var(--ink-primary);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  transition: all 0.2s ease;
+}
+
+.nav-flip-btn:hover:not(:disabled) {
+  background: #ffffff;
+  border-color: var(--ink-muted);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+.nav-flip-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.nav-page-num {
+  font-family: var(--font-hand);
+  font-size: 1.45rem;
+  color: var(--ink-secondary);
+  letter-spacing: 0.5px;
+}
+
+/* ==========================================================================
+   SCRAPBOOK STICKERS & DOODLE ACCENTS
+   ========================================================================== */
+.scrap-sticker {
+  position: absolute;
+  pointer-events: none;
+  z-index: 6;
+  filter: drop-shadow(0 3px 6px rgba(0,0,0,0.15));
+  transition: transform 0.3s ease;
+}
+
+.scrap-sticker:hover {
+  transform: scale(1.08) rotate(3deg);
+  pointer-events: auto;
+}
+
+.sticker-small {
+  width: 90px;
+  height: auto;
+}
+
+.sticker-medium {
+  width: 140px;
+  height: auto;
+}
+
+.sticker-large {
+  width: 200px;
+  height: auto;
+}
+
+/* ==========================================================================
+   EDITABLE SCRATCHPAD / REFLECTIONS DRAWER
+   ========================================================================== */
+.scratchpad-panel {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 320px;
+  background: var(--sticky-yellow);
+  border-radius: 4px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  padding: 16px;
+  z-index: 999;
+  font-family: var(--font-hand);
+  font-size: 1.15rem;
+  transform: translateY(120%);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.scratchpad-panel.open {
+  transform: translateY(0);
+}
+
+.scratchpad-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px dashed rgba(0,0,0,0.15);
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--ink-primary);
+}
+
+.scratchpad-close {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: var(--ink-secondary);
+}
+
+.scratchpad-textarea {
+  width: 100%;
+  height: 140px;
+  background: transparent;
+  border: none;
+  resize: vertical;
+  font-family: var(--font-hand);
+  font-size: 1.2rem;
+  line-height: 1.4;
+  color: #2b2219;
+  outline: none;
+}
+
+/* ==========================================================================
+   TIMELINE OVERVIEW (Page 01)
+   ========================================================================== */
+.journal-timeline {
+  position: relative;
+  margin: 32px 0 20px 20px;
+  padding-left: 28px;
+  border-left: 2px dashed var(--accent-terracotta);
+}
+
+.timeline-entry {
+  position: relative;
+  margin-bottom: 28px;
+}
+
+.timeline-entry:last-child {
+  margin-bottom: 0;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: -35px;
+  top: 4px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent-terracotta);
+  border: 2px solid var(--paper-cream);
+  box-shadow: 0 0 0 2px var(--accent-terracotta);
+}
+
+.timeline-date {
+  font-family: var(--font-code);
+  font-size: 0.76rem;
+  color: var(--accent-terracotta);
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.timeline-title {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--ink-primary);
+}
+
+.timeline-desc {
+  font-size: 0.92rem;
+  color: var(--ink-secondary);
+  margin-top: 4px;
+}
+
+/* ==========================================================================
+   PHOTO PLACEHOLDER (When custom photo is not yet supplied)
+   ========================================================================== */
+.photo-slot {
+  border: 2px dashed var(--border-paper);
+  background: var(--paper-aged);
+  border-radius: 4px;
+  padding: 30px 20px;
+  text-align: center;
+  color: var(--ink-muted);
+  font-size: 0.88rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 220px;
+}
+
+.photo-slot-icon {
+  font-size: 2rem;
+  opacity: 0.6;
+}
+
+.photo-slot-hint {
+  font-family: var(--font-hand);
+  font-size: 1.15rem;
+  color: var(--accent-clay);
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (Tablets & Mobile)
+   ========================================================================== */
+@media (max-width: 900px) {
+  .journal-book {
+    padding: 30px 24px;
+  }
+  .scrap-grid-2, .scrap-grid-2-even, .scrap-grid-3 {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .journal-index-tabs {
+    padding-left: 8px;
+  }
+  .index-tab {
+    padding: 6px 12px;
+    font-size: 0.75rem;
+  }
+  .page-title {
+    font-size: 1.85rem;
+  }
+  .bookmark-ribbon {
+    right: 20px;
+    width: 18px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 12px 6px 60px 6px;
+  }
+  .desk-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .journal-book {
+    padding: 24px 14px;
+    border-radius: 4px;
+  }
+  .journal-book::before {
+    display: none;
+  }
+  .journal-progress-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .page-title {
+    font-size: 1.55rem;
+  }
+  .hand-note-header {
+    display: block;
+    margin-left: 0;
+    margin-top: 4px;
+  }
+  .sticky-note {
+    font-size: 1.15rem;
+    padding: 18px 14px;
+  }
+  .journal-footer-nav {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+  .nav-flip-btn {
+    justify-content: center;
+  }
+  .nav-page-num {
+    order: -1;
+  }
+  .scratchpad-panel {
+    left: 12px;
+    right: 12px;
+    width: auto;
+  }
+  .polaroid-frame {
+    padding: 10px 10px 16px 10px;
+  }
+  .polaroid-caption {
+    font-size: 1.18rem;
+    margin-top: 10px;
+    line-height: 1.3;
+  }
+}
+
+/* ==========================================================================
+   LPL 3-PHOTO SCRAPBOOK COLLAGE
+   ========================================================================== */
+.lpl-collage-container {
+  margin: 32px 0;
+  position: relative;
+  background: var(--paper-aged);
+  border: 1px dashed var(--border-paper);
+  border-radius: 6px;
+  padding: 28px 20px 24px 20px;
+}
+
+.lpl-collage-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.lpl-collage-title {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--ink-primary);
+}
+
+.lpl-photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  align-items: start;
+}
+
+.lpl-photo-card {
+  position: relative;
+  transition: transform 0.25s ease, z-index 0.25s ease;
+}
+
+.lpl-photo-card:hover {
+  transform: scale(1.03) rotate(0deg) !important;
+  z-index: 20;
+}
+
+.lpl-photo-card .polaroid-frame {
+  margin: 0;
+  width: 100%;
+}
+
+.lpl-photo-card .polaroid-img-box {
+  aspect-ratio: 4/3;
+  width: 100%;
+  height: auto;
+}
+
+.photo-replace-hint {
+  display: block;
+  font-family: var(--font-code);
+  font-size: 0.7rem;
+  color: var(--ink-muted);
+  margin-top: 5px;
+  line-height: 1.3;
+  opacity: 0.85;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+@media (max-width: 900px) {
+  .lpl-photo-grid {
+    grid-template-columns: 1fr;
+    max-width: 440px;
+    margin: 0 auto;
+    gap: 28px;
+  }
+}
+
+/* ==========================================================================
+   PRINT / PDF STYLES (Prints as a complete, beautiful scrapbook booklet)
+   ========================================================================== */
+@media print {
+  body {
+    background: #ffffff !important;
+    padding: 0 !important;
+    color: #111111 !important;
+  }
+  .desk-header, .journal-index-tabs, .journal-footer-nav, .desk-actions, .scratchpad-panel, .bookmark-ribbon, .washi-tape {
+    display: none !important;
+  }
+  .journal-wrapper {
+    max-width: 100% !important;
+    margin: 0 !important;
+  }
+  .journal-book {
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+  }
+  .journal-book::before {
+    display: none !important;
+  }
+  .chapter-page {
+    display: block !important;
+    page-break-after: always;
+    page-break-inside: avoid;
+    margin-bottom: 40px;
+    padding-top: 20px;
+  }
+  .chapter-page:last-child {
+    page-break-after: auto;
+  }
+  .polaroid-frame {
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+    transform: none !important;
+    page-break-inside: avoid;
+  }
+  .sticky-note {
+    box-shadow: none !important;
+    border: 1px solid #dcd396 !important;
+    transform: none !important;
+    page-break-inside: avoid;
+  }
+  .scrap-card {
+    box-shadow: none !important;
+    border: 1px solid #ddd !important;
+    page-break-inside: avoid;
+  }
+}
